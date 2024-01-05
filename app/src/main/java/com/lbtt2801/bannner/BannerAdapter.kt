@@ -16,7 +16,8 @@ class BannerAdapter : RecyclerView.Adapter<BannerAdapter.BannerViewHolder>() {
 
     class BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
-        val textView: TextView = itemView.findViewById(R.id.textView)
+        val tvID: TextView = itemView.findViewById(R.id.tvID)
+        val tvPage: TextView = itemView.findViewById(R.id.tvPage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerViewHolder {
@@ -25,10 +26,12 @@ class BannerAdapter : RecyclerView.Adapter<BannerAdapter.BannerViewHolder>() {
         return BannerViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
         images[position]?.let { image ->
-            holder.textView.text = image.id.toString()
+            holder.tvID.text = "ID: ${image.id}"
             holder.imageView.setImageResource(image.dataRes)
+            holder.tvPage.text = "Page: $position"
         }
     }
 
