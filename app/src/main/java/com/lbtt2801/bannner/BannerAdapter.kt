@@ -1,6 +1,7 @@
 package com.lbtt2801.bannner
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,15 +38,13 @@ class BannerAdapter : RecyclerView.Adapter<BannerAdapter.BannerViewHolder>() {
 
     override fun getItemCount(): Int = images.size
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setData(images: List<ImageModel>, viewPager2: ViewPager2) {
         if (this.images.isNotEmpty()) {
             this.images.clear()
         }
 
         this.images.addAll(images)
-        notifyDataSetChanged()
-//        notifyItemRangeInserted(0, images.count())
+        notifyItemRangeInserted(0, images.count())
 
         this.viewPager2 = viewPager2
     }
